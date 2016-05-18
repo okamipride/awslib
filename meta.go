@@ -25,5 +25,5 @@ func (m *MetaData) MetaNewSess() {
 }
 
 func (m *MetaData) GetPublicIP() (string, error) {
-	return m.mdata.GetMetadata("public-ipv4")
+	return m.mdata.GetMetadata("latest/public-ipv4")
 }
