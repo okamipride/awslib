@@ -14,8 +14,9 @@ type MetaData struct {
 
 func MetaNewSess() *MetaData {
 	log.Println("MetaDataInit")
-	cred := getCredential(access_Key_ID, secret_Access_Key)
-	config := aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)
+	//cred := getCredential(access_Key_ID, secret_Access_Key)
+	//config := aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)
+	config := aws.NewConfig().WithRegion(US_WEST_OR)
 	ec2data := ec2metadata.New(session.New(config), config)
 	log.Println("MetaGetSess")
 	return &MetaData{Mdata: ec2data, Config: config}

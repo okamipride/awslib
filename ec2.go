@@ -10,7 +10,8 @@ import (
 
 func EC2GetSession() *ec2.EC2 {
 	log.Println("EC2GetSession")
-	cred := getCredential(access_Key_ID, secret_Access_Key)
-	srv := ec2.New(session.New(aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)))
+	//cred := getCredential(access_Key_ID, secret_Access_Key)
+	//srv := ec2.New(session.New(aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)))
+	srv := ec2.New(session.New(aws.NewConfig().WithRegion(US_WEST_OR)))
 	return srv
 }

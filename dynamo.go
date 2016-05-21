@@ -14,8 +14,9 @@ type Dynamo struct {
 
 func DynamoNewSess() *Dynamo {
 	log.Println("DynamoDBNewSess")
-	cred := getCredential(access_Key_ID, secret_Access_Key)
-	config := aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)
+	//cred := getCredential(access_Key_ID, secret_Access_Key)
+	//config := aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)
+	config := aws.NewConfig().WithRegion(US_WEST_OR)
 	srv := dynamodb.New(session.New(config), config)
 	return &Dynamo{DB: srv, Config: config}
 }
