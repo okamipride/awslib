@@ -8,22 +8,20 @@ import (
 )
 
 type MetaData struct {
-	mdata  *ec2metadata.EC2Metadata
-	config *aws.Config
+	Mdata  *ec2metadata.EC2Metadata
+	Config *aws.Config
 }
 
-func MetaDataInit() MetaData {
+func MetaNewSess() *MetaData {
 	log.Println("MetaDataInit")
 	cred := getCredential(access_Key_ID, secret_Access_Key)
 	config := aws.NewConfig().WithCredentials(cred).WithRegion(US_WEST_OR)
-	return MetaData{config: config}
-}
-
-func (m *MetaData) MetaNewSess() {
+	ec2data := ec2metadata.New(session.New(config), config)
 	log.Println("MetaGetSess")
-	m.mdata = ec2metadata.New(session.New())
+	return &MetaData{Mdata: ec2data, Config: config}
+
 }
 
 func (m *MetaData) GetPublicIP() (string, error) {
-	return m.mdata.GetMetadata("latest/public-ipv4")
+	return m.Mdata.GetMetadata("public-ipv4")
 }
