@@ -5,8 +5,8 @@ import (
 )
 
 const (
-	access_Key_ID     = "AKIAIKSEZHUELPUWO7DA"
-	secret_Access_Key = "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"
+	access_Key_ID     = ""
+	secret_Access_Key = ""
 )
 
 func getCredential(accessKey, secretKey string) *credentials.Credentials {
